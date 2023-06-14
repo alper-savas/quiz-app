@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { quizActions } from "../store";
+import classes from "./Difficulty.module.css";
 
 const difficulties = [
   { name: "Any", value: null },
@@ -20,20 +21,23 @@ const Difficulty = (props) => {
   };
 
   return (
-    <Fragment>
-      <h1>Difficulty</h1>
-      {difficulties.map((d, index) => {
-        return (
-          <button
-            key={index}
-            onClick={handleSelectedDifficulty}
-            value={d.value}
-          >
-            {d.name}
-          </button>
-        );
-      })}
-    </Fragment>
+    <div className={classes.background}>
+      <div className={classes.container}>
+        <h1>Difficulty</h1>
+        <div className={classes.options}></div>
+        {difficulties.map((d, index) => {
+          return (
+            <button
+              key={index}
+              onClick={handleSelectedDifficulty}
+              value={d.value}
+            >
+              {d.name}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

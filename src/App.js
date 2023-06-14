@@ -4,6 +4,7 @@ import store from "./store";
 import HomePage from "./pages/HomePage";
 import QuestionsPage from "./pages/QuestionsPage";
 import ResultPage from "./pages/ResultPage";
+import classes from "./App.module.css";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
+      <div className={classes.background}>
+        <RouterProvider router={router}></RouterProvider>
+      </div>
     </Provider>
   );
 }

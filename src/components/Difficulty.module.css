@@ -1,0 +1,39 @@
+.background {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 30%;
+  height: 30%;
+  margin: 14rem auto;
+  background-color: #aea0ff;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 4rem;
+}
+
+.container h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.container button {
+  border: none;
+  background-color: #6a51d0;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  width: 14rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #3f3c3c;
+}

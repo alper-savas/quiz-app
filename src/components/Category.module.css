@@ -1,0 +1,71 @@
+.background {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  height: 70rem;
+  width: 65%;
+  margin: auto;
+  margin-top: 4rem;
+  background-color: #6a51d0;
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+  text-align: center;
+  border-radius: 20px;
+  overflow: scroll;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container h1 {
+  justify-content: center;
+  align-self: center;
+  font-size: 4rem;
+  color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.options button {
+  display: flex;
+  flex-direction: column;
+  background-color: #6a51d0;
+  align-items: center;
+  border: none;
+}
+
+.options button img {
+  cursor: pointer;
+}
+
+button img {
+  width: 35%;
+  margin: 2.8rem;
+}
+
+.credit {
+  color: #fff;
+  margin: 0 auto;
+  padding-top: 1.2rem;
+}
+
+.credit a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.categoryName {
+  font-size: 1.8rem;
+  color: #fff;
+  padding-bottom: 1rem;
+  transform: translateY(-1.5rem);
+  font-weight: 400;
+}

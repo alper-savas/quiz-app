@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { quizActions } from "../store";
 import { useNavigate } from "react-router-dom";
+import classes from "./Result.module.css";
 
 const Result = () => {
   const score = useSelector((state) => state.score);
@@ -15,10 +16,13 @@ const Result = () => {
   };
 
   return (
-    <Fragment>
-      <div>{score}</div>
-      <button onClick={handlePlayAgain}>Play Again!</button>
-    </Fragment>
+    <div className={classes.background}>
+      <div className={classes.container}>
+        <p>Your Score</p>
+        <p className={classes.score}>{score}/10</p>
+        <button onClick={handlePlayAgain}>Play Again</button>
+      </div>
+    </div>
   );
 };
 

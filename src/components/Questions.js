@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Question from "./Question";
 import { quizActions } from "../store";
+import classes from "./Questions.module.css";
 
 const Questions = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,8 @@ const Questions = () => {
   }, [responseData, apiURL, dispatch, questionIndex]);
 
   const handleAnswerSubmit = (boolValue) => {
-    setQuestionIndex((prevIndex) => (prevIndex += 1));
     if (questionIndex < 9) {
+      setQuestionIndex((prevIndex) => (prevIndex += 1));
       if (boolValue) {
         dispatch(quizActions.incrementScore());
       }
@@ -52,7 +53,11 @@ const Questions = () => {
   };
 
   if (loading) {
-    return <div>Loading Questions...</div>;
+    return (
+      <div className={classes.background}>
+        <div className={classes.loading}>Loading...</div>
+      </div>
+    );
   }
 
   return (

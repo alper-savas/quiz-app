@@ -1,0 +1,16 @@
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  padding: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 20% auto;
+  width: 14rem;
+  border-radius: 10px;
+}
