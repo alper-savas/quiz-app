@@ -45,6 +45,12 @@
   background-color: #fff;
   color: #6a51d0;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  color: #fff;
+  background-color: #aea0ff;
 }
 
 .index {
@@ -56,7 +62,7 @@
 
 .active {
   color: #fff !important;
-  background-color: #aea0ff !important;
+  background-color: #3f3c3c !important;
 }
 
 .right {
@@ -75,12 +81,19 @@
   align-items: center;
   gap: 0.6rem;
   margin-top: 3rem;
+  transform: translateX(1.5rem);
 }
 
 .timer p {
   font-size: 1.8rem;
+  width: 4rem;
 }
 
 .icon {
   width: 4%;
+  filter: brightness(0) invert(1);
+}
+
+.disable {
+  pointer-events: none;
 }

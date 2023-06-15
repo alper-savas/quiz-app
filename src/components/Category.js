@@ -5,7 +5,7 @@ import classes from "./Category.module.css";
 import icon01 from "../assets/icons/any.png";
 import icon02 from "../assets/icons/general-knowledge.png";
 import icon03 from "../assets/icons/book.png";
-import icon04 from "../assets/icons/film.png";
+import icon04 from "../assets/icons/cinema.png";
 import icon05 from "../assets/icons/music.png";
 // import icon06 from "../assets/icons/theater.png";
 import icon07 from "../assets/icons/television.png";
@@ -75,13 +75,14 @@ const Category = (props) => {
         <div className={classes.options}>
           {categories.map((c, index) => {
             return (
-              <button
-                key={index}
-                onClick={() => handleSelectedCategory(c.value)}
-                value={c.value}
-              >
+              <button key={index} value={c.value}>
                 <div>
-                  <img src={c.url} alt="Film" className={classes.icon}></img>
+                  <img
+                    src={c.url}
+                    alt="Film"
+                    className={classes.icon}
+                    onClick={() => handleSelectedCategory(c.value)}
+                  ></img>
                   <p className={classes.categoryName}>{c.name}</p>
                 </div>
               </button>

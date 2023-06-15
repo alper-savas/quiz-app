@@ -11,7 +11,8 @@ const Question = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [rightIndex, setRightIndex] = useState(null);
   const [wrongIndex, setWrongIndex] = useState(null);
-  const [timeleft, { start, pause }] = useCountDown(15000, 1000);
+  const [isAnswered, setIsAnwered] = useState(false);
+  const [timeleft, { start, pause }] = useCountDown(11000, 1000);
 
   useEffect(() => {
     start();
@@ -24,17 +25,21 @@ const Question = (props) => {
   if (timeleft === 1000) {
     const timer = setTimeout(() => {
       setWrongIndex(answers.indexOf(correctAnswer));
+      setIsAnwered(true);
+      pause();
       const timer2 = setTimeout(() => {
         restart();
         props.onSubmit(false);
         setWrongIndex(null);
+        setIsAnwered(false);
         return () => clearTimeout(timer2);
       }, 2000);
       return () => clearTimeout(timer);
-    }, 1000);
+    }, 0);
   }
 
   const handleSelectedAnswer = (index, q) => {
+    setIsAnwered(true);
     setSelectedIndex(index);
     pause();
     const selectedIndexTimer = setTimeout(() => {
@@ -44,6 +49,7 @@ const Question = (props) => {
         setRightIndex(index);
         const correctAnswerTimer = setTimeout(() => {
           props.onSubmit(true);
+          setIsAnwered(false);
           setRightIndex(null);
           restart();
           return () => clearTimeout(correctAnswerTimer);
@@ -54,6 +60,7 @@ const Question = (props) => {
         setWrongIndex(index);
         const correctAnswerTimer = setTimeout(() => {
           props.onSubmit(false);
+          setIsAnwered(false);
           setRightIndex(null);
           setWrongIndex(null);
           restart();
@@ -80,7 +87,9 @@ const Question = (props) => {
                 value={q}
                 className={`${selectedIndex === index && classes.active} ${
                   rightIndex === index && classes.right
-                } ${wrongIndex === index && classes.wrong}`}
+                } ${wrongIndex === index && classes.wrong} ${
+                  isAnswered && classes.disable
+                }`}
               >
                 {decode(q)}
               </button>
@@ -89,7 +98,7 @@ const Question = (props) => {
         </div>
         <div className={classes.timer}>
           <img src={hourglass} alt="Hourglass" className={classes.icon}></img>
-          <p>{timeleft / 1000}</p>
+          <p>{timeleft / 1000 - 1}</p>
         </div>
       </div>
     </div>

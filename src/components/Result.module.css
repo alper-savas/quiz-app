@@ -32,3 +32,12 @@
   margin-top: 2rem;
   font-size: 4rem;
 }
+
+.congrats {
+  margin-bottom: 2rem;
+  width: 20rem;
+}
+
+.congrats img {
+  width: 30%;
+}
