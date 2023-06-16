@@ -11,31 +11,30 @@ const Question = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [rightIndex, setRightIndex] = useState(null);
   const [wrongIndex, setWrongIndex] = useState(null);
+  const [timeleft, { start, pause }] = useCountDown(16000, 1000);
   const [isAnswered, setIsAnwered] = useState(false);
-  const [timeleft, { start, pause }] = useCountDown(11000, 1000);
-
-  useEffect(() => {
-    start();
-  }, [start]);
+  let terminated = false;
+  let terminatedIndex = null;
 
   const restart = useCallback(() => {
     start();
   }, [start]);
 
+  useEffect(() => {
+    start();
+  }, [start]);
+
   if (timeleft === 1000) {
-    const timer = setTimeout(() => {
-      setWrongIndex(answers.indexOf(correctAnswer));
-      setIsAnwered(true);
-      pause();
-      const timer2 = setTimeout(() => {
-        restart();
-        props.onSubmit(false);
-        setWrongIndex(null);
-        setIsAnwered(false);
-        return () => clearTimeout(timer2);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }, 0);
+    pause();
+    terminatedIndex = answers.indexOf(correctAnswer);
+    terminated = true;
+    const timer2 = setTimeout(() => {
+      props.onSubmit(false);
+      terminatedIndex = null;
+      terminated = false;
+      restart();
+      return () => clearTimeout(timer2);
+    }, 2000);
   }
 
   const handleSelectedAnswer = (index, q) => {
@@ -89,7 +88,8 @@ const Question = (props) => {
                   rightIndex === index && classes.right
                 } ${wrongIndex === index && classes.wrong} ${
                   isAnswered && classes.disable
-                }`}
+                } ${terminatedIndex === index && classes.wrong}
+                ${terminated && classes.disable}`}
               >
                 {decode(q)}
               </button>

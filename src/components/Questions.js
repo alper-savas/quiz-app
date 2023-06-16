@@ -60,6 +60,14 @@ const Questions = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className={classes.background}>
+        <div className={classes.loading}>{error}</div>
+      </div>
+    );
+  }
+
   return (
     <Question
       question={question}
